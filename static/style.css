@@ -4,6 +4,9 @@
 html{
     font-size: 62.5%;
 }
+a{
+    text-decoration: none;
+}
 td{
     padding: 0.5rem;
     font-size: 1.4rem;

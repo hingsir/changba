@@ -1,10 +1,13 @@
 var changba = require('./lib/changba.js')
+var ls = require('./lib/localstorage.js')
 var jsdom = require("jsdom")
 var fs = require("fs")
 var ejs = require('ejs')
 var jquery = fs.readFileSync("./node_modules/jquery/dist/jquery.js", "utf-8")
 
 var uid = process.argv[2] || '242071630'
+var localStorageFile = 'localStorage.json'
+var localStorage = ls.loadStorage(localStorageFile)
 var songs = [];
 
 jsdom.env({
@@ -36,24 +39,45 @@ jsdom.env({
 function getSongsPath(songs){
     var promises = []
     songs.forEach((song, index) => {
-        promises.push(getSongPath(song, index))
+        var cache = ls.get(localStorage, 'enworkid', song.enworkid)
+        if(!cache){
+            promises.push(getSongPath(song, index))
+        }else{
+            promises.push(getSongPath(cache, index))
+        }
     })
     Promise.all(promises).then((songs) => {
-        renderFile(songs);
+        renderFile(songs)
+        ls.saveStorage(localStorageFile, songs)
+        console.log(`\n共计${songs.length}首`)
     })
 }
 
 function getSongPath(song, index){
-    return new Promise((resolve, reject) => {
-        setTimeout(function(){
-            changba.fetch(song.enworkid, (err, data) => {
-                var src = /http:\/\/\w+\.changba\.com\/\d+\.mp3/.exec(data)
-                song.src = ( src && src[0] ) ||  `http://changba.com${song.enworkid}`
-                resolve(song)
-            })
-        }, 2000 * index)
+    if(song.type){
+        return new Promise((resolve, reject) => {
+            resolve(song);
+            console.log(`${song.songname} done`)
+        })
+    }else{
+        return new Promise((resolve, reject) => {
+            setTimeout(function(){
+                changba.fetch(song.enworkid, (err, data) => {
+                    var src = /http:\/\/\w+\.changba\.com\/\d+\.mp3/.exec(data)
+                    if(src){
+                        song.src = ( src && src[0] )
+                        song.type = 'MP3'
+                    }else{
+                        song.src = `http://changba.com${song.enworkid}`
+                        song.type = 'MV'
+                    }
+                    resolve(song);
+                    console.log(`${song.songname} done`)
+                })
+            }, 2000 * index)
 
-    })
+        })
+    }
 }
 
 function renderFile(songs){

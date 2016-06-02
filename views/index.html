@@ -17,7 +17,7 @@
                             <%= song.songname %>
                         </td>
                         <td>
-                            <a href="<%= song.src %>">下载</a>
+                            <a href="<%= song.src %>"><%- song.type == 'MP3' ? '<span class="mp3">下载MP3</span>' :  '<span class="mv">观看MV</span>' %></a>
                         </td>
                     </tr>
                 <% }) %>
