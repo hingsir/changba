@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tbody>
+                <% songs.forEach(function(song, index){ %>
+                    <tr>
+                        <td><%= index + 1 %></td>
+                        <td>
+                            <%= song.songname %>
+                        </td>
+                        <td>
+                            <a href="<%= song.src %>">下载</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
