@@ -12,3 +12,9 @@ td{
     font-size: 1.4rem;
     color: #333;
 }
+
+@media screen and (max-width:320px){
+    td{
+        font-size: 1.3rem;
+    }
+}
