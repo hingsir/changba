@@ -63,7 +63,7 @@ function getSongPath(song, index){
         return new Promise((resolve, reject) => {
             setTimeout(function(){
                 changba.fetch(song.enworkid, (err, data) => {
-                    var src = /http:\/\/\w+\.changba\.com\/\d+\.mp3/.exec(data)
+                    var src = /http:\/\/\w+\.changba\.com\/.*?\w+\.mp3/.exec(data)
                     if(src){
                         song.src = ( src && src[0] )
                         song.type = 'MP3'
