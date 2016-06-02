@@ -12,7 +12,7 @@
             <tbody>
                 <% songs.forEach(function(song, index){ %>
                     <tr>
-                        <td><%= index + 1 %></td>
+                        <td><%= songs.length - index %></td>
                         <td>
                             <%= song.songname %>
                         </td>
