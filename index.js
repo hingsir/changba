@@ -40,11 +40,8 @@ function getSongsPath(songs) {
     var promises = []
     songs.forEach((song, index) => {
         var cache = ls.get(localStorage, 'enworkid', song.enworkid)
-        if (!cache) {
-            promises.push(getSongPath(song, index))
-        } else {
-            promises.push(getSongPath(cache, index))
-        }
+        song = cache || song
+        promises.push(getSongPath(song, index))
     })
     Promise.all(promises).then((songs) => {
         renderFile(songs)
