@@ -79,7 +79,7 @@ function getSongPath(song, index) {
 
 function renderFile(songs) {
     ejs.renderFile('views/index.html', {
-        title: '寒江雪唱吧作品',
+        title: '寒江雪笛子作品集',
         songs: songs
     }, function(err, result) {
         fs.writeFile('dist/index.html', result, 'utf-8')
