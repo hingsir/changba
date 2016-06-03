@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="player"></div>
         <table>
             <tbody>
                 <% songs.forEach(function(song, index){ %>
@@ -24,5 +25,17 @@
             </tbody>
         </table>
     </div>
+    <script src="../static/musicplayer.js"></script>
+    <script>
+        var songList = [];
+        document.querySelectorAll('table a[href$=mp3]').forEach(function(item){
+            songList.push(item.href)
+        })
+        new MusicPlayer({
+            container : document.getElementById('player'),
+            songList:songList,
+            autoplay:false
+        })
+    </script>
 </body>
 </html>

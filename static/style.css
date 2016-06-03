@@ -4,17 +4,27 @@
 html{
     font-size: 62.5%;
 }
+body{
+    font-size: 1.4rem;
+}
 a{
     text-decoration: none;
 }
 td{
     padding: 0.5rem;
-    font-size: 1.4rem;
+
     color: #333;
 }
-
 @media screen and (max-width:320px){
     td{
         font-size: 1.3rem;
     }
+}
+
+#J_music_player_control {
+    padding: 1rem 2rem;
+}
+
+#J_music_player_control a{
+    padding: 0 1rem;
 }
