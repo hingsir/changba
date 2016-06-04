@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
+    "build": "npm run start",
+    "postbuild": "git add -A && git commit -m '`date +%Y\\-%m\\-%d\\ %T`' && git push origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
