@@ -12,14 +12,20 @@ a{
 }
 td{
     padding: 0.5rem;
-
     color: #333;
+}
+td:last-child{
+    width: 6rem;
 }
 @media screen and (max-width:320px){
     td{
         font-size: 1.3rem;
     }
+    td:last-child{
+        width: 4.8rem;
+    }
 }
+
 
 #J_music_player_control {
     padding: 1rem 2rem;
