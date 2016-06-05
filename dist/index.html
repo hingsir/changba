@@ -746,7 +746,9 @@
         })
 
         function play(o){
+            mp.autoplay = true
             mp.playByIndex(songList.indexOf(o.getAttribute('data-href')))
+            mp.switchPlayBtn('play')
         }
     </script>
     <script>
