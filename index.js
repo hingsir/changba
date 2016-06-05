@@ -80,7 +80,8 @@ function getSongPath(song, index) {
 function renderFile(songs) {
     ejs.renderFile('views/index.html', {
         title: '寒江雪笛子作品集',
-        songs: songs
+        songs: songs,
+        version: Math.random().toString(16).slice(-6)
     }, function(err, result) {
         fs.writeFile('dist/index.html', result, 'utf-8')
     })
