@@ -12,7 +12,7 @@
             <img src="../static/hanjiangxue.jpg" alt="">
         </div>
         <div id="player"></div>
-        <table>
+        <table id="tb_songs">
             <tbody>
                 <% songs.forEach(function(song, index){ %>
                     <tr>
@@ -22,7 +22,7 @@
                         </td>
                         <td>
                             <% if(song.type == 'MP3') {%>
-                                <a class="play" href="javascript:;" onclick="play(this)" data-href="<%= song.src %>">试听</a>
+                                <a class="play" href="javascript:;" data-href="<%= song.src %>">试听</a>
                                 <a  href="<%= song.src %>">下载</a>
                             <% }else{ %>
                                 <a  href="<%= song.src %>">观看MV</a>
@@ -44,11 +44,15 @@
             songList: songList,
             autoplay: false
         })
-
-        function play(o){
-            mp.autoplay = true
-            mp.playByIndex(songList.indexOf(o.getAttribute('data-href')))
-            mp.switchPlayBtn('play')
+        document.getElementById('tb_songs').onclick = function(e){
+            e = e || window.event
+            var target = e.target || e.srcElement,
+                href = target.getAttribute('data-href')
+            if(href){
+                mp.autoplay = true
+                mp.playByIndex(songList.indexOf(href))
+                mp.switchPlayBtn('play')
+            }
         }
     </script>
     <script>
