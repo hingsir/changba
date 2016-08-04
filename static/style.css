@@ -19,6 +19,7 @@ td{
 }
 td:last-child{
     width: 6rem;
+    text-align: center;
 }
 td a{
     color: #3381E3;
