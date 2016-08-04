@@ -83,6 +83,6 @@ function renderFile(songs) {
         songs: songs,
         version: Math.random().toString(16).slice(-6)
     }, function(err, result) {
-        fs.writeFile('dist/index.html', result, 'utf-8')
+        fs.writeFile('s/index.html', result, 'utf-8')
     })
 }
