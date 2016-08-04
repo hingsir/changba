@@ -79,7 +79,7 @@ function getSongPath(song, index) {
 
 function renderFile(songs) {
     ejs.renderFile('views/index.html', {
-        title: '聆听笛箫 - 寒江雪',
+        title: '聆听笛箫 - 寒江雪🎵',
         songs: songs,
         version: Math.random().toString(16).slice(-6)
     }, function(err, result) {
