@@ -10,24 +10,43 @@ body{
 a{
     text-decoration: none;
 }
+tr:nth-child(odd){
+    background: #f3f3f3;
+}
 td{
-    padding: 0.5rem;
-    color: #333;
+    padding: 1rem 0.5rem;
+    color: #666;
 }
 td:last-child{
     width: 6rem;
+}
+td a{
+    color: #3381E3;
 }
 @media screen and (max-width:320px){
     td{
         font-size: 1.3rem;
     }
 }
-
-
+#tb_songs{
+    margin-top: 5rem;
+    width: 100%;
+}
+#player{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5rem;
+    line-height: 5rem;
+    background: rgba(51, 129, 227, 0.9);
+    text-align: center;
+}
 #J_music_player_control {
-    padding: 1rem 2rem;
+    padding: 0rem 2rem;
 }
 
 #J_music_player_control a{
     padding: 0 1rem;
+    color: #fff;
+    font-size: 1.5rem;
 }
