@@ -67,7 +67,7 @@
             mouseWheel: true
         });
         myScroll.on('scrollEnd', function(){
-            this.y === 0 && this.scrollTo(0, -140, 800)
+            this.y >= -140 && this.scrollTo(0, -140, 800)
         })
     </script>
     <script>
