@@ -33,8 +33,6 @@ td a{
     width: 100%;
     border: 1px solid #dbdbdb;
     border-top: 0;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
 }
 #player{
     position: absolute;
