@@ -64,7 +64,8 @@
         myScroll = new IScroll('#wrapper', {
             startY: -140,
             bounceTime: 300,
-            mouseWheel: true
+            mouseWheel: true,
+            click: true
         });
         myScroll.on('scrollEnd', function(){
             this.y >= -140 && this.scrollTo(0, -140, 800)
