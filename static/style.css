@@ -30,11 +30,14 @@ td a{
     }
 }
 #tb_songs{
-    margin-top: 5rem;
     width: 100%;
+    border: 1px solid #dbdbdb;
+    border-top: 0;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
 }
 #player{
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 100%;
     height: 5rem;
@@ -50,4 +53,35 @@ td a{
     padding: 0 1rem;
     color: #fff;
     font-size: 1.5rem;
+}
+html,body,.container{
+    height: 100%;
+}
+.container{
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+#wrapper{
+    position: absolute;
+    z-index: 1;
+    top: 5rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+#scroller{
+    padding-bottom: 20px;
+}
+#avatar{
+    width: 100px;
+    height: 100px;
+    margin: 20px auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#avatar img{
+    width: 100%;
+    display: block;
 }

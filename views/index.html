@@ -8,31 +8,36 @@
 </head>
 <body>
     <div class="container">
-        <div style="display:none;">
-            <img src="../static/hanjiangxue.jpg" alt="">
-        </div>
         <div id="player"></div>
-        <table id="tb_songs" border="0" cellspacing="0">
-            <tbody>
-                <% songs.forEach(function(song, index){ %>
-                    <tr>
-                        <td><%= songs.length - index %></td>
-                        <td>
-                            <%= song.songname %>
-                        </td>
-                        <td>
-                            <% if(song.type == 'MP3') {%>
-                                <a class="play" href="javascript:;" data-href="<%= song.src %>">试听</a>
-                                <a  href="<%= song.src %>">下载</a>
-                            <% }else{ %>
-                                <a  href="<%= song.src %>">观看MV</a>
-                            <% } %>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
+        <div id="wrapper">
+            <div id="scroller">
+                <div id="avatar">
+                    <img src="../static/hanjiangxue.jpg" alt="">
+                </div>
+                <table id="tb_songs" border="0" cellspacing="0">
+                    <tbody>
+                        <% songs.forEach(function(song, index){ %>
+                            <tr>
+                                <td><%= songs.length - index %></td>
+                                <td>
+                                    <%= song.songname %>
+                                </td>
+                                <td>
+                                    <% if(song.type == 'MP3') {%>
+                                        <a class="play" href="javascript:;" data-href="<%= song.src %>">试听</a>
+                                        <a  href="<%= song.src %>">下载</a>
+                                    <% }else{ %>
+                                        <a  href="<%= song.src %>">观看MV</a>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <script src="../static/iscroll.js"></script>
     <script src="../static/musicplayer.js"></script>
     <script>
         var songList = [];
@@ -54,6 +59,16 @@
                 mp.switchPlayBtn('play')
             }
         }
+    </script>
+    <script>
+        myScroll = new IScroll('#wrapper', {
+            startY: -140,
+            bounceTime: 300,
+            mouseWheel: true
+        });
+        myScroll.on('scrollEnd', function(){
+            this.y === 0 && this.scrollTo(0, -140, 800)
+        })
     </script>
     <script>
         var _hmt = _hmt || [];
