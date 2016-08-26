@@ -88,7 +88,7 @@ function renderFile(songs) {
     })
 }
 function fileMD5(path, callback) {
-    let hash = crypto.createHash('md5');
+    var hash = crypto.createHash('md5');
     if (callback && typeof callback == 'function') {
         fs.readFile(path, (err, result) => {
             if (err) {
